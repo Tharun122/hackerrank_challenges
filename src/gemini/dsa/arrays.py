@@ -1,3 +1,17 @@
+def insertion_sort(arr: list[int]):
+    n = len(arr)
+    for i in range(n):
+        for j in range(i):
+            if arr[j] > arr[i]:
+                temp = arr[i]
+                k = i
+                while k > j:
+                    arr[k] = arr[k-1]
+                    k -= 1
+                arr[j] = temp
+                # break
+    return arr
+
 def selection_sort(arr: list[int]):
     n = len(arr)
     for i in range(n):
@@ -41,4 +55,4 @@ def bubble_sort_recursive_delete(arr: list[int]):
         return arr
     return bubble_sort(arr)
 
-print(selection_sort([110, 2, 45, 23, 3, 45, 9, 4, 64, 4, 78, 34]))
+
