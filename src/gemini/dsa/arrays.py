@@ -1,26 +1,3 @@
-def insertion_sort(arr: list[int]):
-    n = len(arr)
-    for i in range(n):
-        for j in range(i):
-            if arr[j] > arr[i]:
-                temp = arr[i]
-                k = i
-                while k > j:
-                    arr[k] = arr[k-1]
-                    k -= 1
-                arr[j] = temp
-                # break
-    return arr
-
-def selection_sort(arr: list[int]):
-    n = len(arr)
-    for i in range(n):
-        minElementIndex = i
-        for j in range(i, n):
-            if arr[j] < arr[minElementIndex]:
-                minElementIndex = j
-        arr[i],arr[minElementIndex] = arr[minElementIndex],arr[i]
-    return arr
 
 def bubble_sort(arr: list[int]):
     n = len(arr)
@@ -41,18 +18,26 @@ def bubble_sort(arr: list[int]):
             break
     return arr
 
-def bubble_sort_recursive_delete(arr: list[int]):
-    no_of_swaps = 0
-    i = 0
-    while i < len(arr) - 1:
-        if arr[i] > arr[i+1]:
-            temp = arr[i]
-            arr[i] = arr[i+1]
-            arr[i+1] = temp
-            no_of_swaps += 1
-        i += 1
-    if no_of_swaps == 0:
-        return arr
-    return bubble_sort(arr)
+def selection_sort(arr: list[int]):
+    n = len(arr)
+    for i in range(n):
+        minElementIndex = i
+        for j in range(i, n):
+            if arr[j] < arr[minElementIndex]:
+                minElementIndex = j
+        arr[i],arr[minElementIndex] = arr[minElementIndex],arr[i]
+    return arr
 
-
+def insertion_sort(arr: list[int]):
+    n = len(arr)
+    for i in range(n):
+        for j in range(i):
+            if arr[j] > arr[i]:
+                temp = arr[i]
+                k = i
+                while k > j:
+                    arr[k] = arr[k-1]
+                    k -= 1
+                arr[j] = temp
+                # break
+    return arr
