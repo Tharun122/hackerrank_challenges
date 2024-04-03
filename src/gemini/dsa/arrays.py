@@ -1,4 +1,29 @@
+# Merge Sort
+def merge_sort_merge(left: list[int], right: list[int]):
+    merged_arr = []
+    i = 0
+    j = 0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            merged_arr.append(left[i])
+            i += 1
+        else:
+            merged_arr.append(right[j])
+            j += 1
+    merged_arr += left[i:]
+    merged_arr += right[j:]
+    return merged_arr
 
+def merge_sort(arr: list[int]):
+    n = len(arr)
+    if n == 1:
+        return arr
+    break_point = int(n/2)
+    left = merge_sort(arr[:break_point])
+    right = merge_sort(arr[break_point:])
+    return merge_sort_merge(left, right)
+
+# Bubble Sort
 def bubble_sort(arr: list[int]):
     n = len(arr)
     # Repeatedly iterate through the array
@@ -18,6 +43,7 @@ def bubble_sort(arr: list[int]):
             break
     return arr
 
+# Selection Sort
 def selection_sort(arr: list[int]):
     n = len(arr)
     for i in range(n):
@@ -28,6 +54,7 @@ def selection_sort(arr: list[int]):
         arr[i],arr[minElementIndex] = arr[minElementIndex],arr[i]
     return arr
 
+# Insertion Sort
 def insertion_sort(arr: list[int]):
     n = len(arr)
     for i in range(n):
