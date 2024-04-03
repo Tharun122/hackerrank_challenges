@@ -1,3 +1,26 @@
+# Quick Sort
+def partition(arr: list[int], low: int, high: int):
+    pivot = arr[high]
+    i = low - 1
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    arr[i+1], arr[high] = arr[high], arr[i+1]
+    return i+1
+
+def quick_sort(arr: list[int], low: int, high: int):
+    if low < high:
+        pivot_index = partition(arr, low, high)
+        quick_sort(arr, low, pivot_index-1)
+        quick_sort(arr, pivot_index+1, high)
+
+print("\nQuick Sort")
+inp_arr = [110, 2, 45, 23, 3, 45, 9, 4, 64, 4, 78, 34]
+print(inp_arr)
+quick_sort(inp_arr, 0, len(inp_arr)-1)
+print(inp_arr)
+
 # Merge Sort
 def merge_sort_merge(left: list[int], right: list[int]):
     merged_arr = []
@@ -23,6 +46,11 @@ def merge_sort(arr: list[int]):
     right = merge_sort(arr[break_point:])
     return merge_sort_merge(left, right)
 
+print("\nMerge Sort")
+inp_arr = [110, 2, 45, 23, 3, 45, 9, 4, 64, 4, 78, 34]
+print(inp_arr)
+print(merge_sort(inp_arr))
+
 # Bubble Sort
 def bubble_sort(arr: list[int]):
     n = len(arr)
@@ -34,14 +62,15 @@ def bubble_sort(arr: list[int]):
             # Compare adjacent elements and swap if necessary
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
-                print(True, i, j, arr)
                 swapped = True
-            else:
-                print(False, i, j, arr)
-            # If no swaps occurred in the inner loop, the array is already sorted
         if not swapped:
             break
     return arr
+
+print("\nBubble Sort")
+inp_arr = [110, 2, 45, 23, 3, 45, 9, 4, 64, 4, 78, 34]
+print(inp_arr)
+print(bubble_sort(inp_arr))
 
 # Selection Sort
 def selection_sort(arr: list[int]):
@@ -53,6 +82,11 @@ def selection_sort(arr: list[int]):
                 minElementIndex = j
         arr[i],arr[minElementIndex] = arr[minElementIndex],arr[i]
     return arr
+
+print("\nSelection Sort")
+inp_arr = [110, 2, 45, 23, 3, 45, 9, 4, 64, 4, 78, 34]
+print(inp_arr)
+print(selection_sort(inp_arr))
 
 # Insertion Sort
 def insertion_sort(arr: list[int]):
@@ -68,3 +102,8 @@ def insertion_sort(arr: list[int]):
                 arr[j] = temp
                 # break
     return arr
+
+print("\nInsertion Sort")
+inp_arr = [110, 2, 45, 23, 3, 45, 9, 4, 64, 4, 78, 34]
+print(inp_arr)
+print(insertion_sort(inp_arr))
