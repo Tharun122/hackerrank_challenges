@@ -107,3 +107,20 @@ print("\nInsertion Sort")
 inp_arr = [110, 2, 45, 23, 3, 45, 9, 4, 64, 4, 78, 34]
 print(inp_arr)
 print(insertion_sort(inp_arr))
+
+# Binary Search
+def binary_search(arr: list[int], target: int):
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+inp_arr = [-20, -19, -12, -8, 0, 2, 4, 9, 12, 32, 45, 65, 79, 90, 102]
+print(binary_search(inp_arr, 4))
