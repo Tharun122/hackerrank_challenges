@@ -52,3 +52,21 @@ def max_sum_no_adjacent(arr):
 print(max_sum_no_adjacent([75, 105, 120, 75, 90, 135]))
 print(max_sum_no_adjacent([1]))
 print(max_sum_no_adjacent([1, 10, 7]))
+
+# No of ways to make change
+
+def ways_to_make_change(denoms, amount):
+    memo = [0 for _ in range(amount+1)]
+    memo[0] = 1
+    for d in denoms:
+        if(d > amount):
+            break
+        for i in range(amount):
+            a = i + 1
+            if d > a:
+                continue
+            memo[a] = memo[a] + memo[a-d]
+    return memo[amount]
+
+
+print(ways_to_make_change([1,5,10,25], 126))
