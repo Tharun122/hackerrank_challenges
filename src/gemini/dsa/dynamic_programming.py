@@ -30,3 +30,25 @@ if min_coins != -1:
   print("Minimum number of coins:", min_coins)
 else:
   print("No solution possible with given denominations")
+
+# Max sum of non-adjacent elements in an array
+
+def max_sum_no_adjacent(arr):
+    arrLength = len(arr)
+    if arrLength == 0:
+        return 0
+    memo = []
+    for i in range(arrLength):
+        if i == 0:
+            memo.append(arr[i])
+        elif i == 1:
+            memo.append(max(memo[0], arr[i]))
+        else:
+            temp = memo[1]
+            memo[1] = max(memo[1], memo[0] + arr[i])
+            memo[0] = temp
+    return memo[len(memo)-1]
+
+print(max_sum_no_adjacent([75, 105, 120, 75, 90, 135]))
+print(max_sum_no_adjacent([1]))
+print(max_sum_no_adjacent([1, 10, 7]))
