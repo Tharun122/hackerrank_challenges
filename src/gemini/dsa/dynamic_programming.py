@@ -70,3 +70,18 @@ def ways_to_make_change(denoms, amount):
 
 
 print(ways_to_make_change([1,5,10,25], 126))
+
+# Min coins for change
+def min_coins_for_change(denoms, amount):
+    memo = [-1 for _ in range(amount+1)]
+    memo[0] = 0
+    if amount == 0:
+        return 0
+    for d in denoms:
+        for a in range(1, amount+1):
+            if d <= a:
+                if memo[a-d] == -1:
+                    continue
+                new_count = 1 + memo[a-d]
+                memo[a] = new_count if memo[a] == -1 else min(new_count, memo[a])
+    return memo[amount]
